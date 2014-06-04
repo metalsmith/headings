@@ -12,8 +12,8 @@ describe('metalsmith-headings', function(){
       .build(function(err, files){
         if (err) return done(err);
         assert.deepEqual(files['index.html'].headings, [
-          { id: 'two-one', text: 'two one' },
-          { id: 'two-two', text: 'two two' }
+          { id: 'two-one', tag: 'h2', text: 'two one' },
+          { id: 'two-two', tag: 'h2', text: 'two two' }
         ]);
         done();
       });
@@ -26,8 +26,8 @@ describe('metalsmith-headings', function(){
       .build(function(err, files){
         if (err) return done(err);
         assert.deepEqual(files['index.html'].headings, [
-          { id: 'two-one', text: 'two one' },
-          { id: 'two-two', text: 'two two' }
+          { id: 'two-one', tag: 'h2', text: 'two one' },
+          { id: 'two-two', tag: 'h2', text: 'two two' }
         ]);
         done();
       });
