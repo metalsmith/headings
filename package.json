@@ -2,7 +2,7 @@
   "name": "metalsmith-headings",
   "description": "A Metalsmith plugin that extracts headings from HTML files and attaches them to the file's metadata.",
   "repository": "git://github.com/segmentio/metalsmith-headings.git",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
