@@ -32,4 +32,20 @@ describe('metalsmith-headings', function(){
         done();
       });
   });
+
+  it('should preserve order with multiple selectors', function(done){
+    Metalsmith('test/fixture')
+      .use(markdown())
+      .use(headings({ selectors: ['h1', 'h2']}))
+      .build(function(err, files){
+        if (err) return done(err);
+        assert.deepEqual(files['index.html'].headings, [
+          { id: 'one-one', tag: 'h1', text: 'one one' },
+          { id: 'two-one', tag: 'h2', text: 'two one' },
+          { id: 'one-two', tag: 'h1', text: 'one two' },
+          { id: 'two-two', tag: 'h2', text: 'two two' }
+        ]);
+        done();
+      });
+  });
 });
