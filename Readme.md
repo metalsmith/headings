@@ -39,7 +39,7 @@ Metalsmith(__dirname)
 Bear in mind to include this function somewhere before your `.use(markdown())` function.  
 Otherwise, `metalsmith` would compile your files into HTML before it would extract your headings.
 
-One other thing to mention would be that `mode: 'md'` orders your headings according their position the `selectors` array in the options object, whereas the *legacy* HTML-mode orders your headings according to their position in your files. You choose.
+One other thing to mention would be that `mode: 'md'` orders your headings according to their position in the `selectors` array in the options object, whereas the *legacy* HTML-mode orders your headings according to their position in your files. You choose.
 
 ## License
 
