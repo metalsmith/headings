@@ -19,13 +19,29 @@ describe('metalsmith-headings', function(){
       });
   });
 
-  it('should parse headings from Markdown', function(done){
+  it('should parse headings from Markdown only for h2', function(done){
     Metalsmith('test/fixture')
       .use(headings({ selectors: ['h2'], mode: 'md' }))
       .use(markdown())
       .build(function(err, files){
         if (err) return done(err);
         assert.deepEqual(files['index.html'].headings, [
+          { id: 'two-one', tag: 'h2', text: 'two one' },
+          { id: 'two-two', tag: 'h2', text: 'two two' }
+        ]);
+        done();
+      });
+  });
+  
+  it('should parse headings from Markdown for h1 and h2', function(done){
+    Metalsmith('test/fixture')
+      .use(headings({ selectors: ['h1', 'h2'], mode: 'md' }))
+      .use(markdown())
+      .build(function(err, files){
+        if (err) return done(err);
+        assert.deepEqual(files['index.html'].headings, [
+          { id: 'one-one', tag: 'h1', text: 'one one' },
+          { id: 'one-two', tag: 'h1', text: 'one two' },
           { id: 'two-one', tag: 'h2', text: 'two one' },
           { id: 'two-two', tag: 'h2', text: 'two two' }
         ]);
