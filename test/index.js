@@ -19,6 +19,20 @@ describe('metalsmith-headings', function(){
       });
   });
 
+  it('should parse headings from Markdown', function(done){
+    Metalsmith('test/fixture')
+      .use(headings({ selectors: ['h2'], mode: 'md' }))
+      .use(markdown())
+      .build(function(err, files){
+        if (err) return done(err);
+        assert.deepEqual(files['index.html'].headings, [
+          { id: 'two-one', tag: 'h2', text: 'two one' },
+          { id: 'two-two', tag: 'h2', text: 'two two' }
+        ]);
+        done();
+      });
+  });
+
   it('should accept a string shorthand', function(done){
     Metalsmith('test/fixture')
       .use(markdown())
